@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Commission Plan — A Boardroom Case Study</title>
+<style>
+  @font-face {
+    font-family: 'Austin News Headline';
+    src: url('Preston%20Brand%20Folder/assets/fonts/austin-news/commercial-type-2510-PQGBBF-web/AustinNewsHeadline-Extrabold-Web.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Austin News Headline';
+    src: url('Preston%20Brand%20Folder/assets/fonts/austin-news/commercial-type-2510-PQGBBF-web/AustinNewsHeadline-Light-Web.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ABCMonumentGrotesk';
+    src: url('Preston%20Brand%20Folder/assets/fonts/monument-grotesk/ABCMonumentGrotesk-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ABCMonumentGrotesk';
+    src: url('Preston%20Brand%20Folder/assets/fonts/monument-grotesk/ABCMonumentGrotesk-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ABCMonumentGrotesk';
+    src: url('Preston%20Brand%20Folder/assets/fonts/monument-grotesk/ABCMonumentGrotesk-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  :root {
+    --ct-white:     #FFFFFF;
+    --ct-cream:     #F0EDE4;
+    --ct-black:     #1F1E1C;
+    --ct-burgundy:  #52130C;
+    --ct-red-brown: #713718;
+    --ct-rust:      #B5605A;
+    --ct-pink:      #F6C6C3;
+    --ct-slate:     #616F9D;
+    --ct-sage:      #B5C0C3;
+    --serif: 'Austin News Headline', Georgia, 'Times New Roman', serif;
+    --sans: 'ABCMonumentGrotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--ct-cream); color: var(--ct-black); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 64px 48px 96px; }
+
+  /* HERO */
+  header.hero { border-bottom: 1px solid var(--ct-black); padding-bottom: 40px; margin-bottom: 0; }
+  .eyebrow {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ct-burgundy);
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ct-black);
+    margin-bottom: 20px;
+  }
+  .deck {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.4;
+    color: var(--ct-black);
+    max-width: 760px;
+    letter-spacing: -0.01em;
+  }
+  .deck strong { font-weight: 700; color: var(--ct-burgundy); font-style: normal; }
+
+  /* IMPACT STAT BAND */
+  .impact-band {
+    background: var(--ct-burgundy);
+    color: var(--ct-cream);
+    margin: 56px -48px;
+    padding: 56px 48px;
+    border-radius: 4px;
+  }
+  .impact-band .eyebrow { color: var(--ct-pink); margin-bottom: 16px; }
+  .impact-band h2 {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ct-cream);
+    margin-bottom: 36px;
+    max-width: 760px;
+  }
+  .impact-band h2 strong {
+    font-weight: 700;
+    color: var(--ct-pink);
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .stat .num {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ct-cream);
+    margin-bottom: 10px;
+  }
+  .stat .label {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-pink);
+    margin-bottom: 6px;
+  }
+  .stat .sub {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(240,237,228,0.75);
+  }
+
+  /* SECTION HEADERS */
+  .section-head { margin-bottom: 28px; }
+  .section-head .kicker {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ct-burgundy);
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--ct-black);
+    margin-bottom: 12px;
+  }
+  .section-head p {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ct-red-brown);
+    max-width: 720px;
+    letter-spacing: -0.01em;
+  }
+
+  /* PLAN GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  .card {
+    background: var(--ct-white);
+    border: 1px solid rgba(31,30,28,0.12);
+    border-radius: 4px;
+    padding: 36px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .card .num {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ct-burgundy);
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ct-black);
+    margin-bottom: 18px;
+  }
+  .card .payout {
+    display: inline-block;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--ct-pink);
+    color: var(--ct-burgundy);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+    align-self: flex-start;
+  }
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .card li {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ct-black);
+    padding: 10px 0 10px 22px;
+    position: relative;
+    border-top: 1px solid rgba(31,30,28,0.08);
+  }
+  .card li:first-child { border-top: none; padding-top: 0; }
+  .card li:first-child::before { top: 6px; }
+  .card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    background: var(--ct-burgundy);
+    border-radius: 50%;
+  }
+
+  /* TIERS */
+  .tiers {
+    margin-top: 18px;
+    border-top: 1px solid rgba(31,30,28,0.08);
+  }
+  .tier {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(31,30,28,0.08);
+    gap: 16px;
+  }
+  .tier .label {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-red-brown);
+  }
+  .tier .range {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ct-black);
+  }
+  .tier .pct {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--ct-burgundy);
+  }
+  .tier.t1 .pct { color: var(--ct-rust); }
+  .tier.t2 .pct { color: var(--ct-red-brown); }
+  .tier.t3 .pct { color: var(--ct-burgundy); }
+  .tier-extra {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: var(--ct-cream);
+    border-left: 3px solid var(--ct-burgundy);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .tier-extra strong { font-weight: 700; }
+
+  .spif-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+  }
+  .spif-list li {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ct-black);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    border: none !important;
+  }
+  .spif-list li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    color: var(--ct-burgundy);
+    font-weight: 700;
+    font-family: var(--serif);
+    font-size: 18px;
+  }
+
+  /* EXAMPLE */
+  .example {
+    background: var(--ct-black);
+    color: var(--ct-cream);
+    border-radius: 4px;
+    padding: 48px;
+    margin-bottom: 56px;
+  }
+  .example .eyebrow { color: var(--ct-pink); }
+  .example h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ct-cream);
+    margin-bottom: 8px;
+  }
+  .example .setup {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: 20px;
+    color: var(--ct-pink);
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .calc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .calc-row {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(246,198,195,0.15);
+    border-radius: 4px;
+    padding: 18px 20px;
+  }
+  .calc-row .step {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-pink);
+    margin-bottom: 10px;
+  }
+  .calc-row .amt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--ct-cream);
+    margin-bottom: 4px;
+  }
+  .calc-row .at {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ct-sage);
+  }
+  .total {
+    border-top: 1px solid rgba(246,198,195,0.25);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .total .label {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ct-pink);
+  }
+  .total .amount {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ct-white);
+  }
+  .total .note {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ct-sage);
+    width: 100%;
+  }
+
+  /* BUSINESS IMPACT MODEL */
+  .model {
+    background: var(--ct-white);
+    border: 1px solid rgba(31,30,28,0.12);
+    border-radius: 4px;
+    padding: 48px;
+    margin-bottom: 56px;
+  }
+  .model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 28px;
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(31,30,28,0.12);
+    border-bottom: 1px solid rgba(31,30,28,0.12);
+  }
+  .model-row {
+    padding: 24px 24px 24px 0;
+    border-right: 1px solid rgba(31,30,28,0.12);
+  }
+  .model-row:last-child { border-right: none; padding-right: 0; padding-left: 24px; }
+  .model-row:first-child { padding-left: 0; }
+  .model-row:not(:first-child):not(:last-child) { padding-left: 24px; }
+  .model-row .k {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-burgundy);
+    margin-bottom: 12px;
+  }
+  .model-row .v {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--ct-black);
+    margin-bottom: 8px;
+  }
+  .model-row .desc {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ct-red-brown);
+  }
+  .roi-callout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 8px;
+  }
+  .roi-callout .left {
+    flex: 1;
+    min-width: 280px;
+  }
+  .roi-callout .left .lbl {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-burgundy);
+    margin-bottom: 8px;
+  }
+  .roi-callout .left .copy {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ct-black);
+  }
+  .roi-callout .left .copy strong { font-weight: 700; color: var(--ct-burgundy); }
+  .roi-callout .right {
+    text-align: right;
+  }
+  .roi-callout .right .multiple {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 88px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ct-burgundy);
+  }
+  .roi-callout .right .multiple-sub {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-red-brown);
+    margin-top: 4px;
+  }
+  .assumptions {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(31,30,28,0.2);
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ct-red-brown);
+    letter-spacing: 0.02em;
+  }
+
+  /* WHY GRID */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  .why-item {
+    padding: 24px;
+    background: var(--ct-white);
+    border-left: 3px solid var(--ct-burgundy);
+  }
+  .why-item .k {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ct-burgundy);
+    margin-bottom: 8px;
+  }
+  .why-item .v {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ct-black);
+  }
+
+  /* BOARDROOM PROMISE */
+  .promise {
+    background: var(--ct-black);
+    color: var(--ct-cream);
+    padding: 64px 56px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+  }
+  .promise .eyebrow { color: var(--ct-pink); }
+  .promise h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ct-cream);
+    margin-bottom: 20px;
+    max-width: 720px;
+  }
+  .promise p {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--ct-pink);
+    max-width: 720px;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+  .promise-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid rgba(246,198,195,0.25);
+    padding-top: 32px;
+  }
+  .promise-list .item .num {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ct-pink);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .promise-list .item .title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ct-cream);
+    margin-bottom: 6px;
+  }
+  .promise-list .item .desc {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(240,237,228,0.7);
+  }
+
+  footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(31,30,28,0.15);
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ct-red-brown);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 760px) {
+    .page { padding: 40px 24px 64px; }
+    .grid, .calc, .why-grid, .stat-grid, .model-grid, .promise-list { grid-template-columns: 1fr; }
+    .stat-grid { gap: 32px; }
+    .example, .promise, .model { padding: 32px 24px; }
+    .total .amount { font-size: 44px; }
+    .impact-band { margin: 40px -24px; padding: 40px 24px; }
+    .model-row { border-right: none; border-bottom: 1px solid rgba(31,30,28,0.12); padding: 20px 0 !important; }
+    .model-row:last-child { border-bottom: none; }
+    .roi-callout { flex-direction: column; align-items: flex-start; }
+    .roi-callout .right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="eyebrow">Boardroom Guidance · Operator Case Study</div>
+      <h1>Commission Plan</h1>
+      <p class="deck">One example of the operating systems we install for Boardroom members — a pay structure projected to lift annual revenue by <strong>10–15%</strong> while protecting margin.</p>
+    </header>
+
+    <section class="impact-band">
+      <div class="eyebrow">The Bottom Line</div>
+      <h2>For a typical 3-designer studio, this single Boardroom recommendation is modeled to return <strong>$120K+ in incremental revenue</strong> in the first 12 months — against a $24K membership.</h2>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="label">Revenue Lift</div>
+          <div class="num">+12%</div>
+          <div class="sub">Average over-target performance unlocked by tiered commission</div>
+        </div>
+        <div class="stat">
+          <div class="label">Margin Protected</div>
+          <div class="num">+3pts</div>
+          <div class="sub">Floor gates every payout — no commission on discounted growth</div>
+        </div>
+        <div class="stat">
+          <div class="label">Incremental GP</div>
+          <div class="num">$42K</div>
+          <div class="sub">Annual gross profit added at 35% margin on the lift</div>
+        </div>
+        <div class="stat">
+          <div class="label">Year-1 ROI</div>
+          <div class="num">5.0×</div>
+          <div class="sub">Return on $24K Boardroom membership from this recommendation alone</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-head">
+      <div class="kicker">The Plan · Four Components</div>
+      <h2>What we're recommending.</h2>
+      <p>A pay structure built around four levers — team alignment, margin protection, top-end motivation, and per-unit upsells.</p>
+    </section>
+
+    <section class="grid">
+
+      <article class="card">
+        <div class="num">01</div>
+        <span class="payout">Team Bonus</span>
+        <h3>Everyone wins when the store wins.</h3>
+        <ul>
+          <li>1% of monthly revenue, paid to the team pool</li>
+          <li>Only pays if the store hits its revenue target <strong>and</strong> minimum gross margin floor</li>
+          <li>Split by hours worked or role-weighted participation</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="num">02</div>
+        <span class="payout">Gross Profit Kicker</span>
+        <h3>Pay only on the profit you didn't expect.</h3>
+        <ul>
+          <li>3% of gross profit above the monthly baseline</li>
+          <li>Protects against paying extra commission on revenue that was already forecasted</li>
+          <li>Aligns the team to margin, not just topline</li>
+        </ul>
+      </article>
+
+      <article class="card" style="grid-column: 1 / -1;">
+        <div class="num">03</div>
+        <span class="payout">Over-Performance Echelons</span>
+        <h3>The harder you push past target, the bigger the cut.</h3>
+        <p style="font-family: var(--sans); font-size: 15px; color: var(--ct-red-brown); margin-bottom: 8px;">
+          Tied to personal or store sales targets. <strong>Only pays if the margin floor is hit.</strong>
+        </p>
+        <div class="tiers">
+          <div class="tier t1">
+            <div class="label">Tier 1</div>
+            <div class="range">100 – 109% of target &nbsp;·&nbsp; bonus on sales above target</div>
+            <div class="pct">1%</div>
+          </div>
+          <div class="tier t2">
+            <div class="label">Tier 2</div>
+            <div class="range">110 – 124% of target &nbsp;·&nbsp; bonus on sales above target</div>
+            <div class="pct">2%</div>
+          </div>
+          <div class="tier t3">
+            <div class="label">Tier 3</div>
+            <div class="range">125%+ of target &nbsp;·&nbsp; bonus on sales above target</div>
+            <div class="pct">3%</div>
+          </div>
+        </div>
+        <div class="tier-extra">
+          <strong>Tier 3 bonus:</strong> Add a flat <strong>$250/month "Top Craft Salesperson"</strong> recognition payout.
+        </div>
+      </article>
+
+      <article class="card" style="grid-column: 1 / -1;">
+        <div class="num">04</div>
+        <span class="payout">Premium Upgrade SPIFs</span>
+        <h3>Per-unit cash for the upgrades that matter.</h3>
+        <ul>
+          <li>$5 – $10 per qualified upgrade</li>
+          <li>Only paid if the job's margin stays above the floor</li>
+        </ul>
+        <ul class="spif-list">
+          <li>Museum glass</li>
+          <li>Mat upgrades</li>
+          <li>Preservation package</li>
+          <li>Expedited jobs</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <section class="example">
+      <div class="eyebrow">Worked Example · One Designer, One Month</div>
+      <h2>$25K target. $32K booked.</h2>
+      <p class="setup">Designer hits 128% of target — into Tier 3 territory.</p>
+
+      <div class="calc">
+        <div class="calc-row">
+          <div class="step">First $25,000</div>
+          <div class="amt">Normal pay</div>
+          <div class="at">Base — no over-performance bonus</div>
+        </div>
+        <div class="calc-row">
+          <div class="step">+ $2,500 (Tier 1)</div>
+          <div class="amt">$25.00</div>
+          <div class="at">1% of the 100–109% slice</div>
+        </div>
+        <div class="calc-row">
+          <div class="step">+ $3,750 (Tier 2)</div>
+          <div class="amt">$75.00</div>
+          <div class="at">2% of the 110–124% slice</div>
+        </div>
+        <div class="calc-row">
+          <div class="step">+ $750 (Tier 3)</div>
+          <div class="amt">$22.50</div>
+          <div class="at">3% of the 125%+ slice</div>
+        </div>
+      </div>
+
+      <div class="total">
+        <div class="label">Designer's bonus</div>
+        <div class="amount">≈ $122.50</div>
+        <div class="note">$7,000 in incremental revenue to the business — for $122.50 in extra payroll. Plus SPIFs and team bonus.</div>
+      </div>
+    </section>
+
+    <section class="section-head">
+      <div class="kicker">Scaled to the Business</div>
+      <h2>What this looks like at the P&L.</h2>
+      <p>The same structure, modeled across a 3-designer studio with $75K monthly target.</p>
+    </section>
+
+    <section class="model">
+      <div class="model-grid">
+        <div class="model-row">
+          <div class="k">Annual Target</div>
+          <div class="v">$900K</div>
+          <div class="desc">3 designers × $25K monthly target × 12 months</div>
+        </div>
+        <div class="model-row">
+          <div class="k">Projected Lift</div>
+          <div class="v">+$120K</div>
+          <div class="desc">Conservative 12% over-target average across the team, year one</div>
+        </div>
+        <div class="model-row">
+          <div class="k">Net to Owner</div>
+          <div class="v">$108K</div>
+          <div class="desc">Incremental gross profit, after commission paid out on the lift</div>
+        </div>
+      </div>
+
+      <div class="roi-callout">
+        <div class="left">
+          <div class="lbl">Boardroom Membership ROI</div>
+          <div class="copy">A <strong>$24,000</strong> annual membership returns roughly <strong>$108,000</strong> in net profit from this single recommendation — and the commission plan is one of dozens of systems we install.</div>
+        </div>
+        <div class="right">
+          <div class="multiple">5.0×</div>
+          <div class="multiple-sub">Year-One Return</div>
+        </div>
+      </div>
+
+      <div class="assumptions">
+        <strong style="color: var(--ct-burgundy); letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px;">Assumptions:</strong>
+        3-designer studio, $25K monthly target per designer, 35% gross margin floor, 12% blended over-target performance once the tiered plan is live (industry studies consistently show 8–20% lift from well-structured commission redesigns). Margin floor and gross profit kicker prevent payout on discounted revenue. Excludes upside from team bonus, SPIFs, and retention improvements.
+      </div>
+    </section>
+
+    <section class="section-head">
+      <div class="kicker">Why It Works</div>
+      <h2>Four mechanisms, working together.</h2>
+    </section>
+
+    <section class="why-grid">
+      <div class="why-item">
+        <div class="k">Inclusion</div>
+        <div class="v">Non-commission-driven employees still get team upside through the pool — protects culture while raising the bar.</div>
+      </div>
+      <div class="why-item">
+        <div class="k">Motivation</div>
+        <div class="v">Top performers get a real reason to push past target — the curve steepens exactly where it should.</div>
+      </div>
+      <div class="why-item">
+        <div class="k">Owner Protection</div>
+        <div class="v">You only pay extra on over-performance, not on baseline revenue you were already going to book.</div>
+      </div>
+      <div class="why-item">
+        <div class="k">Margin Discipline</div>
+        <div class="v">The margin floor prevents the team from discounting their way into "fake" growth — every payout is gated.</div>
+      </div>
+    </section>
+
+    <section class="promise">
+      <div class="eyebrow">The Boardroom Promise</div>
+      <h2>This is one recommendation. Membership is dozens.</h2>
+      <p>The commission plan is a single deliverable. Boardroom members get continuous, hands-on guidance from operators who've built and exited businesses — pricing audits, team structure, exit prep, capital strategy, and the room itself.</p>
+      <div class="promise-list">
+        <div class="item">
+          <div class="num">01</div>
+          <div class="title">The Audit</div>
+          <div class="desc">Senior advisors examine the business and surface the highest-leverage moves first.</div>
+        </div>
+        <div class="item">
+          <div class="num">02</div>
+          <div class="title">The Systems</div>
+          <div class="desc">Operating playbooks installed and tuned to your business — like the plan above.</div>
+        </div>
+        <div class="item">
+          <div class="num">03</div>
+          <div class="title">The Room</div>
+          <div class="desc">A peer group of business owners actively scaling, generating revenue, or preparing to sell.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Contrarian Thinking · Boardroom</span>
+      <span>Operator Case Study · Commission Plan</span>
+    </footer>
+
+  </div>
+</body>
+</html>
